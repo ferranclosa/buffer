@@ -1,0 +1,36 @@
+enum StatusA{
+Active , Dormant, Suspended
+}
+enum StatusB{
+InProgress, Late, Waiting, Completed
+}
+enum PhasesA{
+Conception, Documentation, Development, Implementation, Testing, Deployment, Deployed 
+}
+enum Role{
+SA, BA, TM, AR, PM, TS, US
+}
+
+entity Teams{
+	mail String ,
+    sname String maxlength(15) required, 
+    lname String, 
+    members Number
+}
+
+entity Member {
+	sname String maxlength(15) required, 
+    lname String ,
+	mail String ,
+    role Role, 
+    status StatusA
+}
+
+entity IadWork{
+	sname String maxlength(15) required,
+    lname String, 
+    
+}
+relationship ManytoOne{
+Member(teams{sname}) to Teams
+}
